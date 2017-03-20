@@ -1,17 +1,24 @@
 module PairingMatrix
   class CommitReader
-    def initialize(repos)
-      @repos = repos
+    def initialize(config)
+      @config = config
     end
 
     def read(since)
       commits = []
-      @repos.each do |repo|
+      @config.repos.each do |repo|
         Dir.chdir repo do
           commits << read_commits(since)
         end
       end
       commits.flatten
+    end
+
+    def authors(since)
+      commits = read(since)
+      commits.map do |commit|
+        commit.scan(/#{@config.authors_regex}/).flatten.compact.reject(&:empty?).join(',')
+      end.compact.reject(&:empty?)
     end
 
     private
