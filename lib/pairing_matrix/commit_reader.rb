@@ -1,3 +1,5 @@
+require 'date'
+
 module PairingMatrix
   class CommitReader
     def initialize(config)
@@ -16,14 +18,14 @@ module PairingMatrix
 
     def authors(since)
       commits = read(since)
-      p "total commits: #{commits.size}"
       commits.map do |commit|
         commit.scan(/#{@config.authors_regex}/).flatten.compact.reject(&:empty?).sort.join(',')
       end.compact.reject(&:empty?)
     end
 
-    def authors_with_commits(since)
-      authors = authors(since)
+    def authors_with_commits(days)
+      date = (Date.today - days).to_s
+      authors = authors(date)
       author_groups = authors.group_by { |n| n }
       author_groups.map do |k, v|
         pair = k.split(',')
