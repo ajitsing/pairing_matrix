@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = PairingMatrix::VERSION
   spec.authors       = ["AjitSingh"]
   spec.email         = ["jeetsingh.ajit@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = 'Draw pairing matrix from given repos and configurations'
+  spec.description   = 'Draw pairing matrix from given repos and configurations'
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -19,5 +19,4 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
 end

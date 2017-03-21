@@ -1,1 +1,3 @@
+#!/usr/bin/env ruby
+
 `ruby lib/pairing_matrix/server/server.rb`
