@@ -1,6 +1,6 @@
 # PairingMatrix
 
-TODO: Write a gem description
+[![Gem Version](https://badge.fury.io/rb/pairing_matrix.svg)](https://badge.fury.io/rb/pairing_matrix)
 
 ## Installation
 
