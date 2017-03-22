@@ -4,6 +4,8 @@ require_relative '../../pairing_matrix'
 
 module PairingMatrix
   class Server < Sinatra::Base
+    set :bind, '0.0.0.0'
+
     config_reader = PairingMatrix::ConfigReader.new('pairing_matrix.yml')
     config = config_reader.config
     commit_reader = PairingMatrix::CommitReader.new(config)
