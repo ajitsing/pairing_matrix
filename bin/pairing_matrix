@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
+require_relative '../lib/pairing_matrix'
 
-`ruby lib/pairing_matrix/server/server.rb`
+run PairingMatrix::Server.run!
