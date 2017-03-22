@@ -13,7 +13,7 @@ module PairingMatrix
     end
 
     get '/matrix' do
-      File.read(File.join('lib/pairing_matrix/server/public', 'index.html'))
+      File.read(File.join(File.dirname(__FILE__), 'public/index.html'))
     end
   end
 end
