@@ -53,6 +53,21 @@ svg {
 
 .player {
     cursor: pointer;
+    r: 20px;
+    fill-opacity: 0.75;
+    stroke: #EE1031;
+    stroke-opacity: 0.75;
+    z-index: 10;
+}
+
+.playerLarge {
+    cursor: pointer;
+    r: 25px;
+    fill: red;
+    fill-opacity: 0.75;
+    stroke: blue;
+    stroke-opacity: 0.75;
+    z-index: 10;
 }
 
 .player_names {
@@ -62,4 +77,16 @@ svg {
 .input-container {
     height: 300px;
     overflow: scroll;
+}
+
+.connect {
+    fill: none;
+    stroke: #DD1031;
+    stroke-opacity: 0.75;
+}
+
+.connectLarge {
+    fill: none;
+    stroke: black;
+    stroke-opacity: 0.75;
 }
