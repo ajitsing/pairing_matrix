@@ -9,8 +9,12 @@ module PairingMatrix
       @github_repos = github_repos
     end
 
-    def has_github_repo?(repo)
-      @github_repos.include? repo
+    def fetch_from_github?
+      !@github_repos.nil? && !@github_repos.empty?
+    end
+
+    def has_github_access_token?
+      !@github_access_token.nil? && !@github_access_token.empty?
     end
   end
 end

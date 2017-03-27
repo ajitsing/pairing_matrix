@@ -6,12 +6,11 @@ module PairingMatrix
   class GithubCommitReader < CommitReader
     def initialize(config)
       super(config)
-      @repos = nil
-      @github_client = Octokit::Client.new(:access_token => @config.github_access_token)
+      @github_client = github_client
     end
 
     def read(since)
-      repos.map do |repo|
+      @config.github_repos.map do |repo|
         puts "Fetching commits since #{since} for #{repo}"
         commits = @github_client.commits_since(repo, since).map { |commit| commit.commit.message }
         puts "Total commits: #{commits.size}"
@@ -20,16 +19,12 @@ module PairingMatrix
     end
 
     private
-    def repos
-      return @repos unless @repos.nil?
-      repos = @github_client.repos.map { |repo| repo.name }
-      orgs = @github_client.orgs.map { |org| org.login }
-      orgs.each do |org|
-        repos << @github_client.org_repos(org).map { |repo| "#{org}/#{repo.name}" }
+    def github_client
+      if @config.has_github_access_token?
+        Octokit::Client.new(:access_token => @config.github_access_token)
+      else
+        Octokit::Client.new
       end
-
-      @repos = repos.flatten.select { |repo| @config.has_github_repo? repo }
-      p @repos
     end
   end
 end
