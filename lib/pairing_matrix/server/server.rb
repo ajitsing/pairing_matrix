@@ -8,7 +8,7 @@ module PairingMatrix
 
     config_reader = PairingMatrix::ConfigReader.new('pairing_matrix.yml')
     config = config_reader.config
-    commit_reader = PairingMatrix::CommitReader.new(config)
+    commit_reader = PairingMatrix::GithubCommitReader.new(config)
 
     get '/data/:days' do
       commit_reader.authors_with_commits(params['days'].to_i).to_json
