@@ -42,6 +42,10 @@ textarea#pairing_text {
     margin-top: 10px;
 }
 
+.visualize_matrix_container {
+    text-align: center;
+}
+
 .viz_container {
     text-align: center;
 }

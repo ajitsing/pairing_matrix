@@ -3,6 +3,7 @@
 <head>
     <title>Pairing Matrix</title>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="loader.css"/>
 
     <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
     <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
@@ -12,12 +13,22 @@
 </head>
 
 <body>
-<div>
+<div class="visualize_matrix_container">
     <span>Display data of last</span>
     <input type="number" id="days" value="10"/>
     <span>days</span>
     <button id="visualize">Visualize</button>
 </div>
+
+<div class="loaderContainer">
+    <div class="loader">
+        <span class="dot dot_1"></span>
+        <span class="dot dot_2"></span>
+        <span class="dot dot_3"></span>
+        <span class="dot dot_4"></span>
+    </div>
+</div>
+
 <div class="viz_container">
     <svg>
         <g class="area">
