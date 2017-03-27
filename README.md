@@ -34,6 +34,28 @@ repos:
   - /Users/Ajit/projects/project3
 ```
 
+The above config will fetch data directly from your local repositories.
+
+### Want to fetch private repos data directly from github?
+
+```yml
+authors_regex: ^.*\[([\w]*)(?:\/)?([\w]*)\].*$
+github_access_token: 000324cff69wes5613f732c345hn679c0knt509c
+github_repos:
+  - org1/repo1
+  - org1/repo2
+  - github_username/my_private_repo
+```
+
+### Fetching data from public github repos
+
+```yml
+authors_regex: ^.*\[([\w]*)(?:\/)?([\w]*)\].*$
+github_repos:
+  - github_username/my_public_repo1
+  - github_username/my_public_repo2
+```
+
 authors_regex is the regex which extracts developers name from the commit message. This regex will depend on the commit message format that you follow in your project.
 
 ## Contributing
