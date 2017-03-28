@@ -24,10 +24,7 @@ module PairingMatrix
 
     private
     def fetch_commits(repo, since)
-      puts "Fetching commits since #{since} for #{repo}"
-      commits = @github_client.commits_since(repo, since).map { |commit| commit.commit.message }
-      puts "Total commits: #{commits.size}"
-      commits
+      @github_client.commits_since(repo, since).map { |commit| commit.commit.message }
     end
 
     def github_client
