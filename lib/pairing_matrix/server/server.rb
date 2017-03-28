@@ -9,6 +9,17 @@ module PairingMatrix
   class Server < Sinatra::Base
     set :bind, '0.0.0.0'
 
+    logging_file = File.new('app.log', 'a+')
+    logging_file.sync = true
+    before {
+      env["rack.errors"] = logging_file
+    }
+    configure do
+      enable :logging
+      logging_file.sync = true
+      use Rack::CommonLogger, logging_file
+    end
+
     config_reader = PairingMatrix::ConfigReader.new('pairing_matrix.yml')
     config = config_reader.config
     commit_reader = PairingMatrix::CommitReader.new(config)
