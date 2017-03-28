@@ -2,6 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/pairing_matrix.svg)](https://badge.fury.io/rb/pairing_matrix)
 
+![Alt text](https://github.com/ajitsing/ScreenShots/blob/master/pairing_matrix/pairing_mat.png)
+
 ## Installation
 
 Add this line to your application's Gemfile:
