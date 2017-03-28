@@ -15,11 +15,11 @@ module PairingMatrix
       together do
         @config.github_repos.map do |repo|
           async do
-            commits += fetch_commits(repo, since)
+            commits << fetch_commits(repo, since)
           end
         end
       end
-      commits
+      commits.flatten
     end
 
     private
