@@ -1,4 +1,5 @@
 require 'octokit'
+require 'eldritch'
 
 Octokit.auto_paginate = true
 
@@ -10,15 +11,25 @@ module PairingMatrix
     end
 
     def read(since)
-      @config.github_repos.map do |repo|
-        puts "Fetching commits since #{since} for #{repo}"
-        commits = @github_client.commits_since(repo, since).map { |commit| commit.commit.message }
-        puts "Total commits: #{commits.size}"
-        commits
-      end.flatten
+      commits = []
+      together do
+        @config.github_repos.map do |repo|
+          async do
+            commits += fetch_commits(repo, since)
+          end
+        end
+      end
+      commits
     end
 
     private
+    def fetch_commits(repo, since)
+      puts "Fetching commits since #{since} for #{repo}"
+      commits = @github_client.commits_since(repo, since).map { |commit| commit.commit.message }
+      puts "Total commits: #{commits.size}"
+      commits
+    end
+
     def github_client
       if @config.has_github_access_token?
         Octokit::Client.new(:access_token => @config.github_access_token)
