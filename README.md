@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/pairing_matrix.svg)](https://badge.fury.io/rb/pairing_matrix)
 
-![Alt text](https://github.com/ajitsing/ScreenShots/blob/master/pairing_matrix/pairing_mat.png)
+<img src="https://github.com/ajitsing/ScreenShots/blob/master/pairing_matrix/pairing_mat.png" width="600" height="550" />
 
 ## Installation
 
