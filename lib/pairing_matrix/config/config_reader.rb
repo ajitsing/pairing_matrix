@@ -1,4 +1,5 @@
-require 'YAML'
+require 'yaml'
+require_relative 'config'
 
 module PairingMatrix
   class ConfigReader
