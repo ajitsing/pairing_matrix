@@ -4,6 +4,11 @@
 
 <img src="https://github.com/ajitsing/ScreenShots/blob/master/pairing_matrix/pairing_mat.png" width="600" height="550" />
 
+## How to read this matrix?
+    1. This matrix is purely based on commits.
+    2. Darker the line more the pair has worked together.
+    3. If you see a dark red circle around a name that means the person has worked alone
+
 ## Installation
 
 Add this line to your application's Gemfile:
