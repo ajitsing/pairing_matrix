@@ -25,12 +25,41 @@ Or install it yourself as:
 
 ## Usage
 
-Once you have installed the pairing matrix gem, simply run the pairing_matrix command as shown below and the gem will start the web server. Then hit the url ```localhost:4567/matrix``` in the browser.
+First of all you need to decide a format for your commit messages e.g.
+#Feature [Dev1/Dev2] Your commit message
 
-```pairing_matrix```
+You can choose any format as long as you are able to extract dev names from the message using a regex.
+Once you have decided on the commit message format, create a pairing_matrix.yml file.
 
-To run the web server successfully, it needs a configuration file with name ```pairing_matrix.yml``` in the same directory where you are running the command.
+```yml
+authors_regex: ^.*\[([\w]*)(?:\/)?([\w]*)\].*$
+github_access_token: 000324cff69wes5613f732c345hn679c0knt509c
+github_repos:
+  - org1/repo1
+  - org1/repo2
+  - github_username/my_private_repo
+```
 
+#### authors_regex:
+This regex is used to extract dev names from the commit message. You can verify your regex in irb console using the below command. If your regex is correct it will return an array of dev names.
+
+e.g
+```ruby
+"#4324 [Ajit/Abhishek] My commit message".scan(/^.*\[([\w]*)(?:\/)?([\w]*)\].*$/).flatten
+=> ["Ajit", "Abhishek"]
+```
+
+#### github_access_token:
+If you want to use private github repos for matrix, then create a github_access_token and give it the repo read permission. Here is how you can create this token: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+
+#### github_repos:
+List your repos which you want to use for matrix. If you have your repos inside organization then follow the ```org/repo``` format else just mention ```github_username/repo```.
+
+
+Now after installing the pairing matrix gem, simply run the ```pairing_matrix``` command in the repo where you have ```pairing_matrix.yml``` file. This command will start a web server.
+Then hit the url ```localhost:4567/matrix``` in the browser.
+
+## Some example of pairing_matrix.yml
 ### Here is a sample pairing_matrix.yml file
 
 ```yml
@@ -62,8 +91,6 @@ github_repos:
   - github_username/my_public_repo1
   - github_username/my_public_repo2
 ```
-
-authors_regex is the regex which extracts developers name from the commit message. This regex will depend on the commit message format that you follow in your project.
 
 ## Contributing
 
