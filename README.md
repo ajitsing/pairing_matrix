@@ -1,6 +1,8 @@
 # PairingMatrix
 
 [![Gem Version](https://badge.fury.io/rb/pairing_matrix.svg)](https://badge.fury.io/rb/pairing_matrix)
+![Gem Downloads](http://ruby-gem-downloads-badge.herokuapp.com/pairing_matrix?type=total)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/MIT)
 
 <img src="https://github.com/ajitsing/ScreenShots/blob/master/pairing_matrix/pairing_mat.png" width="600" height="550" />
 
