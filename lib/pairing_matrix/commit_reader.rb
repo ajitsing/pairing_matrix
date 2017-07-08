@@ -19,7 +19,7 @@ module PairingMatrix
     def authors(since)
       commits = read(since)
       commits.map do |commit|
-        commit.scan(/#{@config.authors_regex}/).flatten.compact.reject(&:empty?).sort.join(',')
+        commit.scan(/#{@config.authors_regex}/).flatten.compact.reject(&:empty?).map { |name| name.gsub(' ', '') }.sort.join(',')
       end.compact.reject(&:empty?)
     end
 
