@@ -48,6 +48,16 @@ textarea#pairing_text {
 
 .viz_container {
     text-align: center;
+    float: right;
+}
+
+.authors_container {
+    display: none;
+    float: left;
+}
+
+.authors {
+    margin-top: 20px;
 }
 
 svg {
