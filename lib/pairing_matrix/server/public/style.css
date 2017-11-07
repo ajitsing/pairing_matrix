@@ -51,6 +51,10 @@ textarea#pairing_text {
     float: right;
 }
 
+.info {
+    text-align: center;
+}
+
 .authors_container {
     display: none;
     float: left;
