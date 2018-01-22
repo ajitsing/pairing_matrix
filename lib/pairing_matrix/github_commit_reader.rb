@@ -1,5 +1,6 @@
 require 'octokit'
 require 'eldritch'
+require_relative './commit_cache'
 
 Octokit.auto_paginate = true
 
@@ -8,9 +9,13 @@ module PairingMatrix
     def initialize(config)
       super(config)
       @github_client = github_client
+      @cache = CommitCache.new
     end
 
     def read(since)
+      cache = @cache.get(since)
+      return cache unless cache.nil?
+
       commits = []
       together do
         @config.github_repos.map do |repo|
@@ -19,7 +24,9 @@ module PairingMatrix
           end
         end
       end
-      commits.flatten
+      result = commits.flatten
+      @cache.put(since, result)
+      result
     end
 
     private
