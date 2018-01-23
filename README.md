@@ -5,7 +5,7 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/MIT)
 [![Twitter Follow](https://img.shields.io/twitter/follow/Ajit5ingh.svg?style=social)](https://twitter.com/Ajit5ingh)
 
-<img src="https://github.com/ajitsing/ScreenShots/blob/master/pairing_matrix/pairing_mat.png" width="600" height="550" />
+<img src="https://github.com/ajitsing/ScreenShots/blob/master/pairing_matrix/pairing_mat.png" width="900" height="550" />
 
 ## How to read this matrix?
     1. This matrix is purely based on commits.
