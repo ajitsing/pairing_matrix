@@ -1,6 +1,7 @@
 require 'octokit'
 require 'eldritch'
 require_relative './commit_cache'
+require_relative './commit_reader'
 
 Octokit.auto_paginate = true
 
