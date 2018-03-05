@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'puma'
 require 'json'
 require_relative '../../pairing_matrix'
 require_relative '../config/config_reader'
@@ -9,6 +10,7 @@ require_relative '../github_commit_reader'
 module PairingMatrix
   class Server < Sinatra::Base
     set :bind, '0.0.0.0'
+    set :server, :puma
 
     logging_file = File.new('app.log', 'a+')
     logging_file.sync = true
