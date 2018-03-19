@@ -111,6 +111,13 @@ github_repos:
   - github_username/repo2
 ```
 
+## Contributors
+
+Thanks goes to these wonderful people:
+
+[Abhishek Thakur](https://github.com/abhikur)  
+[Sumit Gupta](https://github.com/sumitgpt)
+
 ## Contributing
 
 1. Fork it ( https://github.com/ajitsing/pairing_matrix/fork )
