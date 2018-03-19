@@ -37,5 +37,9 @@ module PairingMatrix
     get '/matrix' do
       File.read(File.join(File.dirname(__FILE__), 'public/index.html'))
     end
+
+    get '/' do
+      redirect '/matrix'
+    end
   end
 end
