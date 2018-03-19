@@ -43,6 +43,12 @@ github_repos:
   - github_username/my_private_repo
 ```
 
+#### github_url:
+Add github url if you are using github enterprise. This entry can be skipped if you are using github.com.  
+Mention the API endpoint.
+
+example: http://github.mycompany.com/api/v3/
+
 #### authors_regex:
 This regex is used to extract dev names from the commit message. You can verify your regex in irb console using the below command. If your regex is correct it will return an array of dev names.
 
@@ -93,6 +99,16 @@ authors_regex: ^.*\[([\w]*)(?:\/)?([\w]*)\].*$
 github_repos:
   - github_username/my_public_repo1
   - github_username/my_public_repo2
+```
+
+### Fetching data from github enterprise
+
+```yml
+github_url: http://git.mycompany.com/api/v3/
+authors_regex: ^.*\[([\w]*)(?:\/)?([\w]*)\].*$
+github_repos:
+  - github_username/repo1
+  - github_username/repo2
 ```
 
 ## Contributing

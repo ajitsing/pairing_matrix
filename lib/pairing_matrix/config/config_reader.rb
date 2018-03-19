@@ -13,7 +13,8 @@ module PairingMatrix
           raw_config['repos'],
           raw_config['authors_regex'],
           raw_config['github_access_token'],
-          raw_config['github_repos']
+          raw_config['github_repos'],
+          raw_config['github_url']
       )
     end
   end

@@ -36,6 +36,7 @@ module PairingMatrix
     end
 
     def github_client
+      Octokit.configure {|c| c.api_endpoint = @config.github_url} if @config.github_enterprise?
       if @config.has_github_access_token?
         Octokit::Client.new(:access_token => @config.github_access_token)
       else
