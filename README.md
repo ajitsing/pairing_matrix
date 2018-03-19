@@ -66,7 +66,7 @@ List your repos which you want to use for matrix. If you have your repos inside 
 
 
 Now after installing the pairing matrix gem, simply run the ```pairing_matrix``` command in the repo where you have ```pairing_matrix.yml``` file. This command will start a web server.
-Then hit the url ```localhost:4567/matrix``` in the browser.
+Then hit the url [localhost:4567/matrix](http://localhost:4567/matrix) or [localhost:4567](http://localhost:4567) in the browser. In case you want to use the json data, hit [http://localhost:4567/data/:days](http://localhost:4567/data/30)
 
 ## Some example of pairing_matrix.yml
 ### Here is a sample pairing_matrix.yml file
