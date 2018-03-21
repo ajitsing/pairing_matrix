@@ -23,10 +23,16 @@ module PairingMatrix
       end.compact.reject(&:empty?)
     end
 
+    def titleize(name)
+      name.gsub(/\w+/) do |word|
+        word.capitalize
+      end
+    end
+
     def authors_with_commits(days)
       date = (Date.today - days).to_s
       authors = authors(date)
-      author_groups = authors.group_by { |n| n }
+      author_groups = authors.group_by { |n| titleize(n)}
       author_groups.map do |k, v|
         pair = k.split(',')
         pair.unshift('') if pair.size == 1
