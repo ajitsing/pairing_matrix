@@ -1,6 +1,7 @@
 # PairingMatrix
 
 [![Gem Version](https://badge.fury.io/rb/pairing_matrix.svg)](https://badge.fury.io/rb/pairing_matrix)
+[![HitCount](http://hits.dwyl.io/ajitsing/pairing_matrix.svg)](http://hits.dwyl.io/ajitsing/pairing_matrix)
 ![Gem Downloads](http://ruby-gem-downloads-badge.herokuapp.com/pairing_matrix?type=total)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/MIT)
 [![Twitter Follow](https://img.shields.io/twitter/follow/Ajit5ingh.svg?style=social)](https://twitter.com/Ajit5ingh)
