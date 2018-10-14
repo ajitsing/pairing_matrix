@@ -1,5 +1,6 @@
 # PairingMatrix
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/ajitsing/apkToJava/graphs/commit-activity)
 [![Gem Version](https://badge.fury.io/rb/pairing_matrix.svg)](https://badge.fury.io/rb/pairing_matrix)
 [![HitCount](http://hits.dwyl.io/ajitsing/pairing_matrix.svg)](http://hits.dwyl.io/ajitsing/pairing_matrix)
 ![Gem Downloads](http://ruby-gem-downloads-badge.herokuapp.com/pairing_matrix?type=total)
