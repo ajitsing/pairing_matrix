@@ -131,7 +131,7 @@ Thanks goes to these wonderful people:
 
 ## License
 ```LICENSE
-Copyright (c) 2017 Ajit Singh
+Copyright (c) 2020 Ajit Singh
 
 MIT License
 
