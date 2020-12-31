@@ -3,9 +3,9 @@ require 'puma'
 require 'json'
 require_relative '../../pairing_matrix'
 require_relative '../config/config_reader'
-require_relative '../local_commit_reader'
-require_relative '../commit_cache'
-require_relative '../github_commit_reader'
+require_relative '../cache/commit_cache'
+require_relative '../commit_readers/local_commit_reader'
+require_relative '../commit_readers/github_commit_reader'
 
 module PairingMatrix
   class Server < Sinatra::Base
