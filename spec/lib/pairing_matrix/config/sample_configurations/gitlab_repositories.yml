@@ -1,0 +1,6 @@
+gitlab:
+  url: https://gitlab.com/api/v4
+  access_token: Eu2ZVk8lL3P0YGw_aCFl
+  repositories:
+    - gitlab_username/my_repo_1
+    - gitlab_username/my_repo_2

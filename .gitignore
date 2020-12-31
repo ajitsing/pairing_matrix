@@ -23,4 +23,4 @@ tmp
 mkmf.log
 .idea
 *.iml
-*.yml
+pairing_matrix.yml

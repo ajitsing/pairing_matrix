@@ -1,0 +1,7 @@
+authors_regex: ^.*\[([\w]*)(?:\/)?([\w]*)\].*$
+
+local:
+  repositories:
+    - /Users/Ajit/projects/project1
+    - /Users/Ajit/projects/project2
+    - /Users/Ajit/projects/project3
