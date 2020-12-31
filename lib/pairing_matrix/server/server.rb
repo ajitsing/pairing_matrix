@@ -3,7 +3,7 @@ require 'puma'
 require 'json'
 require_relative '../../pairing_matrix'
 require_relative '../config/config_reader'
-require_relative '../commit_reader'
+require_relative '../local_commit_reader'
 require_relative '../commit_cache'
 require_relative '../github_commit_reader'
 
@@ -26,12 +26,15 @@ module PairingMatrix
     PairingMatrix.enable_caching = true
     config_reader = PairingMatrix::ConfigReader.new('pairing_matrix.yml')
     config = config_reader.config
-    commit_reader = PairingMatrix::CommitReader.new(config)
-    commit_reader = PairingMatrix::GithubCommitReader.new(config) if config.fetch_from_github?
+    local_commit_reader = PairingMatrix::LocalCommitReader.new(config)
+    github_commit_reader = PairingMatrix::GithubCommitReader.new(config)
 
     get '/data/:days' do
       PairingMatrix.enable_caching = params[:cache_enabled] != 'false'
-      commit_reader.authors_with_commits(params['days'].to_i).to_json
+      local_data = local_commit_reader.authors_with_commits(params['days'].to_i)
+      github_data = github_commit_reader.authors_with_commits(params['days'].to_i)
+
+      (local_data + github_data).to_json
     end
 
     get '/matrix' do

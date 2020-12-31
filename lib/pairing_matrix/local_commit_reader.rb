@@ -1,14 +1,14 @@
 require 'date'
 
 module PairingMatrix
-  class CommitReader
+  class LocalCommitReader
     def initialize(config)
       @config = config
     end
 
     def read(since)
       commits = []
-      @config.repos.each do |repo|
+      @config.local_repositories.repositories.each do |repo|
         Dir.chdir repo do
           commits << read_commits(since)
         end

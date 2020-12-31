@@ -1,15 +1,14 @@
 require 'octokit'
 require 'eldritch'
 require_relative './commit_cache'
-require_relative './commit_reader'
+require_relative './local_commit_reader'
 
 Octokit.auto_paginate = true
 
 module PairingMatrix
-  class GithubCommitReader < CommitReader
+  class GithubCommitReader < LocalCommitReader
     def initialize(config)
       super(config)
-      @github_client = github_client
       @cache = CommitCache.new
     end
 
@@ -19,9 +18,17 @@ module PairingMatrix
 
       commits = []
       together do
-        @config.github_repos.map do |repo|
-          async do
-            commits << fetch_commits(repo, since)
+        [
+          @config.github_public_repositories,
+          @config.github_private_repositories,
+          @config.github_enterprise_repositories
+        ].each do |github_repos|
+          client = github_client(github_repos)
+
+          github_repos.repositories.map do |repo|
+            async do
+              commits << fetch_commits(client, repo, since)
+            end
           end
         end
       end
@@ -31,14 +38,15 @@ module PairingMatrix
     end
 
     private
-    def fetch_commits(repo, since)
-      @github_client.commits_since(repo, since).map { |commit| commit.commit.message }
+    def fetch_commits(client, repo, since)
+      client.commits_since(repo, since).map { |commit| commit.commit.message }
     end
 
-    def github_client
-      Octokit.configure {|c| c.api_endpoint = @config.github_url} if @config.github_enterprise?
-      if @config.has_github_access_token?
-        Octokit::Client.new(:access_token => @config.github_access_token)
+    def github_client(github_config)
+      Octokit.configure {|c| c.api_endpoint = github_config.url} if github_config.url
+
+      if github_config.has_github_access_token?
+        Octokit::Client.new(:access_token => github_config.access_token)
       else
         Octokit::Client.new
       end

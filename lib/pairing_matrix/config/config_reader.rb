@@ -1,5 +1,7 @@
 require 'yaml'
 require_relative 'config'
+require_relative 'public_repos'
+require_relative 'private_repos'
 
 module PairingMatrix
   class ConfigReader
@@ -9,13 +11,14 @@ module PairingMatrix
 
     def config
       raw_config = YAML::load_file @config_file
+
       PairingMatrix::Config.new(
-          raw_config['repos'],
-          raw_config['authors_regex'],
-          raw_config['github_access_token'],
-          raw_config['github_repos'],
-          raw_config['github_url']
-      )
+        raw_config['authors_regex'],
+        PairingMatrix::PublicRepos.create_from(raw_config['local']),
+        PairingMatrix::PublicRepos.create_from(raw_config['github_public']),
+        PairingMatrix::PrivateRepos.create_from(raw_config['github_private']),
+        PairingMatrix::PrivateRepos.create_from(raw_config['github_enterprise'])
+       )
     end
   end
 end
