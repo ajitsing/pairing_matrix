@@ -33,6 +33,7 @@ module PairingMatrix
           end
         end
       end
+
       result = commits.flatten
       @cache.put(since, result)
       result

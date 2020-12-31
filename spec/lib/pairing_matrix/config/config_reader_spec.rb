@@ -44,7 +44,7 @@ describe PairingMatrix::ConfigReader do
             expect(configuration.github_private_repositories.repositories.size).to eql(2)
             expect(configuration.github_private_repositories.repositories).to eql(['github_username/my_private_repo_1', 'github_username/my_private_repo_2'])
             expect(configuration.github_private_repositories.access_token).to eql('000324cff69wes5613f732c345hn679c0knt509c')
-            expect(configuration.github_private_repositories.url).to be_nil
+            expect(configuration.github_private_repositories.url).to eq('https://api.github.com/')
         end
       end
 
@@ -57,6 +57,18 @@ describe PairingMatrix::ConfigReader do
             expect(configuration.github_enterprise_repositories.repositories).to eql(['github_username/repo_1', 'github_username/repo_2'])
             expect(configuration.github_enterprise_repositories.access_token).to eql('000324cff69wes5613f732c345hn679c0knt509d')
             expect(configuration.github_enterprise_repositories.url).to eql('http://git.mycompany.com/api/v3/')
+        end
+      end
+
+      context 'when gitlab repositories are present' do
+        it 'should read gitlab repositories' do
+            config_reader = PairingMatrix::ConfigReader.new('./spec/lib/pairing_matrix/config/sample_configurations/gitlab_repositories.yml')
+            configuration = config_reader.config
+
+            expect(configuration.gitlab.repositories.size).to eql(2)
+            expect(configuration.gitlab.repositories).to eql(['gitlab_username/my_repo_1', 'gitlab_username/my_repo_2'])
+            expect(configuration.gitlab.access_token).to eql('Eu2ZVk8lL3P0YGw_aCFl')
+            expect(configuration.gitlab.url).to eql('https://gitlab.com/api/v4')
         end
       end
     end

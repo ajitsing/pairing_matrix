@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency   'rspec', '~> 3.10'
   spec.add_dependency               'sinatra', '~> 1.4.8'
   spec.add_dependency               'octokit', '~> 4.15.0'
+  spec.add_dependency               'gitlab', '~> 4.17.0'
   spec.add_dependency               'eldritch', '~> 1.1.2'
   spec.add_dependency               'puma', '~> 3.12.6'
 end
