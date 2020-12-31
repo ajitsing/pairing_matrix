@@ -1,17 +1,18 @@
 require 'octokit'
 require 'eldritch'
 require_relative '../cache/commit_cache'
-require_relative './local_commit_reader'
+require_relative './commit_reader'
 
 Octokit.auto_paginate = true
 
 module PairingMatrix
-  class GithubCommitReader < LocalCommitReader
+  class GithubCommitReader < CommitReader
     def initialize(config)
       super(config)
       @cache = CommitCache.new
     end
 
+    protected
     def read(since)
       cache = @cache.get(since)
       return cache unless cache.nil?
