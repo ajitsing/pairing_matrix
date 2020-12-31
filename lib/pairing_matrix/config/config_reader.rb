@@ -1,7 +1,7 @@
 require 'yaml'
 require_relative 'config'
-require_relative 'public_repos'
-require_relative 'private_repos'
+require_relative 'local_repos'
+require_relative 'remote_repos'
 
 module PairingMatrix
   class ConfigReader
@@ -14,9 +14,9 @@ module PairingMatrix
 
       PairingMatrix::Config.new(
         raw_config['authors_regex'],
-        PairingMatrix::PublicRepos.create_from(raw_config['local']),
-        PairingMatrix::PrivateRepos.create_from(raw_config['gitlab']),
-        PairingMatrix::PrivateRepos.create_from(raw_config['github'])
+        PairingMatrix::LocalRepos.create_from(raw_config['local']),
+        PairingMatrix::RemoteRepos.create_from(raw_config['gitlab']),
+        PairingMatrix::RemoteRepos.create_from(raw_config['github'])
        )
     end
   end

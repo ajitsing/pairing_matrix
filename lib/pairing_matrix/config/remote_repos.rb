@@ -1,5 +1,5 @@
 module PairingMatrix
-    class PrivateRepos
+    class RemoteRepos
         attr_reader :repositories, :access_token, :url
 
         def initialize(repos, access_token, url)
@@ -11,13 +11,17 @@ module PairingMatrix
         def self.create_from(config)
             repos = config['repositories'] rescue []
             access_token = config['access_token'] rescue nil
-            url = config['url'] || 'https://api.github.com/' rescue nil
+            url = config['url'] rescue nil
 
-            PrivateRepos.new(repos, access_token, url)
+            RemoteRepos.new(repos, access_token, url)
         end
 
         def has_access_token?
             !@access_token.nil? && !@access_token.empty?
+        end
+
+        def absent?
+            @repositories.empty?
         end
     end
 end

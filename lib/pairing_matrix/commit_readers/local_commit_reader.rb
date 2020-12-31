@@ -9,6 +9,8 @@ module PairingMatrix
 
     protected
     def read(since)
+      return [] if @config.local.absent?
+
       commits = []
       @config.local.repositories.each do |repo|
         Dir.chdir repo do

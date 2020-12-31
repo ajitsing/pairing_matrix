@@ -14,6 +14,8 @@ module PairingMatrix
 
     protected
     def read(since)
+      return [] if @config.github.absent?
+
       cache = @cache.get(since)
       return cache unless cache.nil?
 

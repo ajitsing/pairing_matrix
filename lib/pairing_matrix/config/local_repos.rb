@@ -1,5 +1,5 @@
 module PairingMatrix
-    class PublicRepos
+    class LocalRepos
         attr_reader :repositories, :url
 
         def initialize(repos)
@@ -8,7 +8,11 @@ module PairingMatrix
 
         def self.create_from(config)
             repos = config['repositories'] rescue []
-            PublicRepos.new(repos)
+            LocalRepos.new(repos)
+        end
+
+        def absent?
+            @repositories.empty?
         end
     end
 end
