@@ -19,8 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency   'bundler', '~> 1.6'
+  spec.add_development_dependency   'rspec', '~> 3.10'
   spec.add_dependency               'sinatra', '~> 1.4.8'
   spec.add_dependency               'octokit', '~> 4.15.0'
   spec.add_dependency               'eldritch', '~> 1.1.2'
-  spec.add_dependency               'puma', '~> 3.11.2'
+  spec.add_dependency               'puma', '~> 3.12.6'
 end

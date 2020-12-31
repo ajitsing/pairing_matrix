@@ -1,6 +1,3 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
-gem 'octokit'
-gem 'eldritch'
-gem 'puma'
+gemspec
