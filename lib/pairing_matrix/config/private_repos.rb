@@ -16,12 +16,8 @@ module PairingMatrix
             PrivateRepos.new(repos, access_token, url)
         end
 
-        def has_github_access_token?
+        def has_access_token?
             !@access_token.nil? && !@access_token.empty?
-        end
-
-        def present?
-            !@repositories.nil? && !@repositories.empty?
         end
     end
 end

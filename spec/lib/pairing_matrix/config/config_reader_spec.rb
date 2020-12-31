@@ -12,13 +12,25 @@ describe PairingMatrix::ConfigReader do
         end
       end
 
-      context 'when local repositories are present' do
+      context 'Github' do
+        it 'should read github configuration' do
+          config_reader = PairingMatrix::ConfigReader.new('./spec/lib/pairing_matrix/config/sample_configurations/github_repositories.yml')
+          configuration = config_reader.config
+
+          expect(configuration.github.repositories.size).to eql(2)
+          expect(configuration.github.repositories).to eql(['github_username/my_private_repo_1', 'github_username/my_private_repo_2'])
+          expect(configuration.github.access_token).to eql('000324cff69wes5613f732c345hn679c0knt509c')
+          expect(configuration.github.url).to eq('https://api.github.com/')
+        end
+      end
+
+      context 'Local' do
         it 'read local repositories' do
             config_reader = PairingMatrix::ConfigReader.new('./spec/lib/pairing_matrix/config/sample_configurations/local_repositories.yml')
             configuration = config_reader.config
 
-            expect(configuration.local_repositories.repositories.size).to eql(3)
-            expect(configuration.local_repositories.repositories).to eql([
+            expect(configuration.local.repositories.size).to eql(3)
+            expect(configuration.local.repositories).to eql([
                 '/Users/Ajit/projects/project1',
                 '/Users/Ajit/projects/project2',
                 '/Users/Ajit/projects/project3'
@@ -26,41 +38,7 @@ describe PairingMatrix::ConfigReader do
         end
       end
 
-      context 'when github public repositories are present' do
-        it 'should read github public repositories' do
-            config_reader = PairingMatrix::ConfigReader.new('./spec/lib/pairing_matrix/config/sample_configurations/github_public_repositories.yml')
-            configuration = config_reader.config
-
-            expect(configuration.github_public_repositories.repositories.size).to eql(2)
-            expect(configuration.github_public_repositories.repositories).to eql(['org1/repo1', 'org1/repo2'])
-        end
-      end
-
-      context 'when github private repositories are present' do
-        it 'should read github private repositories' do
-            config_reader = PairingMatrix::ConfigReader.new('./spec/lib/pairing_matrix/config/sample_configurations/github_private_repositories.yml')
-            configuration = config_reader.config
-
-            expect(configuration.github_private_repositories.repositories.size).to eql(2)
-            expect(configuration.github_private_repositories.repositories).to eql(['github_username/my_private_repo_1', 'github_username/my_private_repo_2'])
-            expect(configuration.github_private_repositories.access_token).to eql('000324cff69wes5613f732c345hn679c0knt509c')
-            expect(configuration.github_private_repositories.url).to eq('https://api.github.com/')
-        end
-      end
-
-      context 'when github enterprise repositories are present' do
-        it 'should read github enterprise repositories' do
-            config_reader = PairingMatrix::ConfigReader.new('./spec/lib/pairing_matrix/config/sample_configurations/github_enterprise_repositories.yml')
-            configuration = config_reader.config
-
-            expect(configuration.github_enterprise_repositories.repositories.size).to eql(2)
-            expect(configuration.github_enterprise_repositories.repositories).to eql(['github_username/repo_1', 'github_username/repo_2'])
-            expect(configuration.github_enterprise_repositories.access_token).to eql('000324cff69wes5613f732c345hn679c0knt509d')
-            expect(configuration.github_enterprise_repositories.url).to eql('http://git.mycompany.com/api/v3/')
-        end
-      end
-
-      context 'when gitlab repositories are present' do
+      context 'Gitlab' do
         it 'should read gitlab repositories' do
             config_reader = PairingMatrix::ConfigReader.new('./spec/lib/pairing_matrix/config/sample_configurations/gitlab_repositories.yml')
             configuration = config_reader.config

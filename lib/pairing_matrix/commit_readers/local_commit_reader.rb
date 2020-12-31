@@ -10,7 +10,7 @@ module PairingMatrix
     protected
     def read(since)
       commits = []
-      @config.local_repositories.repositories.each do |repo|
+      @config.local.repositories.each do |repo|
         Dir.chdir repo do
           commits << read_commits(since)
         end

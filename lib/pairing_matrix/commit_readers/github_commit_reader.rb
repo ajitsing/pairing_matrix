@@ -19,17 +19,11 @@ module PairingMatrix
 
       commits = []
       together do
-        [
-          @config.github_public_repositories,
-          @config.github_private_repositories,
-          @config.github_enterprise_repositories
-        ].each do |github_repos|
-          client = github_client(github_repos)
+        client = github_client(@config.github)
 
-          github_repos.repositories.map do |repo|
-            async do
-              commits << fetch_commits(client, repo, since)
-            end
+        @config.github.repositories.map do |repo|
+          async do
+            commits << fetch_commits(client, repo, since)
           end
         end
       end
@@ -45,9 +39,9 @@ module PairingMatrix
     end
 
     def github_client(github_config)
-      Octokit.configure {|c| c.api_endpoint = github_config.url} if github_config.url
+      Octokit.configure {|c| c.api_endpoint = github_config.url}
 
-      if github_config.has_github_access_token?
+      if github_config.has_access_token?
         Octokit::Client.new(:access_token => github_config.access_token)
       else
         Octokit::Client.new

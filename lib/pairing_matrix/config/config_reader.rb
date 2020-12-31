@@ -16,9 +16,7 @@ module PairingMatrix
         raw_config['authors_regex'],
         PairingMatrix::PublicRepos.create_from(raw_config['local']),
         PairingMatrix::PrivateRepos.create_from(raw_config['gitlab']),
-        PairingMatrix::PublicRepos.create_from(raw_config['github_public']),
-        PairingMatrix::PrivateRepos.create_from(raw_config['github_private']),
-        PairingMatrix::PrivateRepos.create_from(raw_config['github_enterprise'])
+        PairingMatrix::PrivateRepos.create_from(raw_config['github'])
        )
     end
   end
