@@ -9,7 +9,7 @@ describe PairingMatrix::GitlabCommitReader do
             gitlab_config = configuration.gitlab
 
             days = 10
-            reader = PairingMatrix::GitlabCommitReader.new(configuration)
+            reader = PairingMatrix::GitlabCommitReader.new(gitlab_config)
 
             gitlab_client = double(:gitlab_client)
             expect(Gitlab).to receive(:client)

@@ -28,9 +28,9 @@ module PairingMatrix
     config_reader = PairingMatrix::ConfigReader.new('pairing_matrix.yml')
     config = config_reader.config
 
-    local_commit_reader = PairingMatrix::LocalCommitReader.new(config)
-    github_commit_reader = PairingMatrix::GithubCommitReader.new(config)
-    gitlab_commit_reader = PairingMatrix::GitlabCommitReader.new(config)
+    local_commit_reader = PairingMatrix::LocalCommitReader.new(config.local)
+    github_commit_reader = PairingMatrix::GithubCommitReader.new(config.github)
+    gitlab_commit_reader = PairingMatrix::GitlabCommitReader.new(config.gitlab)
 
     get '/data/:days' do
       PairingMatrix.enable_caching = params[:cache_enabled] != 'false'

@@ -11,12 +11,12 @@ module PairingMatrix
 
     def config
       raw_config = YAML::load_file @config_file
+      author_regex = raw_config['authors_regex']
 
       PairingMatrix::Config.new(
-        raw_config['authors_regex'],
-        PairingMatrix::LocalRepos.create_from(raw_config['local']),
-        PairingMatrix::RemoteRepos.create_from(raw_config['gitlab']),
-        PairingMatrix::RemoteRepos.create_from(raw_config['github'])
+        PairingMatrix::LocalRepos.create_from(author_regex, raw_config['local']),
+        PairingMatrix::RemoteRepos.create_from(author_regex, raw_config['gitlab']),
+        PairingMatrix::RemoteRepos.create_from(author_regex, raw_config['github'])
        )
     end
   end

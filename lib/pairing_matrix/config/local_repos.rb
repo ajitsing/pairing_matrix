@@ -1,14 +1,15 @@
 module PairingMatrix
     class LocalRepos
-        attr_reader :repositories, :url
+        attr_reader :repositories, :url, :authors_regex
 
-        def initialize(repos)
+        def initialize(authors_regex, repos)
             @repositories = repos
+            @authors_regex = authors_regex
         end
 
-        def self.create_from(config)
+        def self.create_from(authors_regex, config)
             repos = config['repositories'] rescue []
-            LocalRepos.new(repos)
+            LocalRepos.new(authors_regex, repos)
         end
 
         def absent?

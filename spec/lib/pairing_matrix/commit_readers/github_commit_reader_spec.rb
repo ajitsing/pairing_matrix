@@ -9,7 +9,7 @@ describe PairingMatrix::GithubCommitReader do
             github_config = configuration.github
 
             days = 10
-            reader = PairingMatrix::GithubCommitReader.new(configuration)
+            reader = PairingMatrix::GithubCommitReader.new(github_config)
 
             github_client = double(:github_client)
             expect(Octokit::Client).to receive(:new)

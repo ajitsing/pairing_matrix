@@ -12,15 +12,13 @@ module PairingMatrix
 
     protected
     def read(since)
-        return [] if @config.gitlab.absent?
-
         cache = @cache.get(since)
         return cache unless cache.nil?
   
         commits = []
         together do
-            client = gitlab_client(@config.gitlab)
-            @config.gitlab.repositories.map do |repo|
+            client = gitlab_client
+            @config.repositories.map do |repo|
                 async do
                     commits << fetch_commits(client, repo, since)
                 end
@@ -37,8 +35,8 @@ module PairingMatrix
         client.commits(repo, since: since).map { |commit| commit.title }
     end
 
-    def gitlab_client(gitlab_config)
-        Gitlab.client(endpoint: gitlab_config.url, private_token: gitlab_config.access_token)
+    def gitlab_client
+        Gitlab.client(endpoint: @config.url, private_token: @config.access_token)
     end
   end
 end
