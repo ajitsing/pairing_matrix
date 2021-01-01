@@ -8,9 +8,5 @@ module PairingMatrix
       @gitlab = gitlab
       @github = github
     end
-
-    def has_github_access_token?
-      @github.has_github_access_token?
-    end
   end
 end

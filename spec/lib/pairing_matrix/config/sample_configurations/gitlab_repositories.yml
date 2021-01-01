@@ -1,3 +1,5 @@
+authors_regex: ^.*\[([\w]*)(?:\/)?([\w]*)\].*$
+
 gitlab:
   url: https://gitlab.com/api/v4
   access_token: Eu2ZVk8lL3P0YGw_aCFl
