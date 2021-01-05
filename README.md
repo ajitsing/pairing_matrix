@@ -61,6 +61,7 @@ e.g
 If you want to use private repos for matrix, then create a access token and give it the repo read permission. Here is how you can create the token: 
 
 **Github:** https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+
 **Gitlab:** https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
 
 #### repositories:
